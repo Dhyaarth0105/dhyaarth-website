@@ -1,0 +1,146 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Home - Dhyaarth Technology{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Welcome to Dhyaarth Technology</h1>
+    <p class="lead">We specialize in Python-based Automation & RPA Solutions tailored for modern businesses.</p>
+    <a href="/services/" class="btn btn-primary mt-3">Explore Our Services</a>
+</div>
+
+<section class="bg-dark text-white text-center py-5" style="background: linear-gradient(to right, #222, #444);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Python-Based Intelligent Automation</h1>
+      <p class="lead mt-3">Revolutionizing Business Processes with Cutting-edge Automation Solutions</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Why Choose Python for Automation?</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">✔️ Easy to Learn and Implement</li>
+            <li class="list-group-item">✔️ Powerful Libraries (Pandas, Selenium, PyAutoGUI, etc.)</li>
+            <li class="list-group-item">✔️ Great Community and Support</li>
+            <li class="list-group-item">✔️ Seamless Integration with APIs, Databases & UI</li>
+            <li class="list-group-item">✔️ Scalable and Secure Automation Architecture</li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" width="60%" alt="Python Automation">
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Automation Use Cases</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <div class="card p-4 shadow-sm h-100">
+            <h5>🧾 Invoice Processing</h5>
+            <p>Extract, validate and upload invoices to ERP with 100% accuracy using OCR + Python bots.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-4 shadow-sm h-100">
+            <h5>📦 Inventory Automation</h5>
+            <p>Automated stock updates, reorder triggers and reports through Python + Excel scripts.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card p-4 shadow-sm h-100">
+            <h5>📨 Email Parsing</h5>
+            <p>Fetch data from incoming emails, extract attachments, and populate dashboards or systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- 🔥 Impact Section with Animated Counters -->
+<section class="py-5 text-center bg-dark text-white">
+    <div class="container">
+      <h2 class="mb-4">Our Impact in Numbers</h2>
+      <div class="row">
+        <div class="col-md-3">
+          <h3><span class="counter" data-target="62">0</span>+</h3>
+          <p>Bots Delivered</p>
+        </div>
+        <div class="col-md-3">
+          <h3><span class="counter" data-target="5000">0</span>+</h3>
+          <p>Man Hours Saved</p>
+        </div>
+        <div class="col-md-3">
+          <h3><span class="counter" data-target="34">0</span>+</h3>
+          <p>Departments Automated</p>
+        </div>
+        <div class="col-md-3">
+          <h3><span class="counter" data-target="100">0</span>%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="py-5 text-center bg-warning">
+    <div class="container">
+      <h2 class="mb-3">Ready to Transform Your Business?</h2>
+      <a href="{% url 'contact' %}" class="btn btn-dark btn-lg">Get In Touch</a>
+    </div>
+</section>
+
+<!-- ✨ Counter Animation Script -->
+<script>
+    // Only animate counters when the section is visible
+    const counters = document.querySelectorAll('.counter');
+    let countersAnimated = false;
+
+    function animateCounters() {
+        counters.forEach(counter => {
+            counter.innerText = '0';
+
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const current = +counter.innerText.replace(/,/g, '');
+
+                const increment = target / 200; // Smaller value = slower count
+
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment).toLocaleString();
+                    setTimeout(updateCounter, 10);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+
+            updateCounter();
+        });
+    }
+
+    // Use Intersection Observer to trigger animation when section is in view
+    document.addEventListener('DOMContentLoaded', function() {
+        const impactSection = document.querySelector('.counter').closest('section');
+        if ('IntersectionObserver' in window && impactSection) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        animateCounters();
+                        countersAnimated = true;
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(impactSection);
+        } else {
+            // Fallback: animate immediately
+            animateCounters();
+        }
+    });
+</script>
+
+{% endblock %}

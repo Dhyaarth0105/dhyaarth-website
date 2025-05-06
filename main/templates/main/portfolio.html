@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Portfolio - Dhyaarth{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Work & Success Stories</h2>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Invoice Automation Bot for Manufacturing Giant</h5>
+                        <p class="card-text">
+                            Developed a Python + RPA bot that processed 12,000+ invoices monthly, saving 300+ man-hours.
+                            Integrated with SAP and Excel. Reduced manual errors to near zero.
+                        </p>
+                        <span class="badge bg-success">Python</span>
+                        <span class="badge bg-warning text-dark">SAP Integration</span>
+                        <span class="badge bg-info">Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">HR Onboarding Bot for Mid-Sized IT Firm</h5>
+                        <p class="card-text">
+                            Automated employee document collection, ID creation, and welcome mailer using Python and Power Automate.
+                            Completed in 0.5 seconds per employee!
+                        </p>
+                        <span class="badge bg-primary">RPA</span>
+                        <span class="badge bg-secondary">Power Automate</span>
+                        <span class="badge bg-success">Email Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Live Dashboard for Shift Monitoring</h5>
+                        <p class="card-text">
+                            Created Power BI dashboards with live shift updates for shop floor monitoring.
+                            Used Python scripts to extract and clean data from 5+ sources every 15 mins.
+                        </p>
+                        <span class="badge bg-danger">Power BI</span>
+                        <span class="badge bg-info">Python ETL</span>
+                        <span class="badge bg-dark">Manufacturing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Attendance Reporting System with Face ID</h5>
+                        <p class="card-text">
+                            Built a facial recognition attendance system integrated with email reports using Python and OpenCV.
+                            Used by 50+ employees daily.
+                        </p>
+                        <span class="badge bg-secondary">OpenCV</span>
+                        <span class="badge bg-info">Python</span>
+                        <span class="badge bg-warning text-dark">Face Detection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="/contact/" class="btn btn-outline-primary">Discuss Your Project with Us</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
