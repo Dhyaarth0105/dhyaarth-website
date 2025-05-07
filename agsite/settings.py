@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--tft*n2!e@alsy%4dva*94-*wwwprk+9upru%4%6@g*uyb4_%^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dhyaarthtechnology.onrender.com']
+ALLOWED_HOSTS = ['dhyaarthtechnology.onrender.com', 'dhyaarthtechnology.com', 'www.dhyaarthtechnology.com',]
 
 
 # Application definition
