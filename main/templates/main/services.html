@@ -9,13 +9,19 @@
 
 {% block content %}
 <!-- Modern Hero Section -->
-<section class="services-hero position-relative" style="background: url('{% static 'main/images/about-hero.jpg' %}') no-repeat center center/cover;">
-    <div class="overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);"></div>
-    <div class="container text-center text-white position-relative" style="z-index:2; padding: 8rem 0;">
-        <span class="badge bg-light text-dark px-3 py-2 mb-3 shadow-sm">Our Services</span>
-        <h1 class="display-4 fw-bold mb-3">Automation Solutions for Modern Businesses</h1>
-        <p class="lead mb-4">Transform your operations with cutting-edge automation from Python scripting to full-scale RPA and AI integration.</p>
-        <a href="#services" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-sm">Explore Services</a>
+<section class="services-hero py-5 position-relative" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
+    <div class="container text-center text-white py-5">
+        <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Our Services</h1>
+        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Automation Solutions for Modern Businesses</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <span class="badge bg-light text-dark px-3 py-2">Python Automation</span>
+                    <span class="badge bg-light text-dark px-3 py-2">RPA Solutions</span>
+                    <span class="badge bg-light text-dark px-3 py-2">AI Integration</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -113,4 +119,35 @@
         </div>
     </div>
 </section>
+
+<!-- Add Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Add AOS library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    });
+</script>
+
+<style>
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.badge {
+    transition: all 0.3s ease;
+}
+.badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+</style>
 {% endblock %}
