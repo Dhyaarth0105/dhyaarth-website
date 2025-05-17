@@ -1,25 +1,116 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %}Services - Dhyaarth{% endblock %}
+{% block title %}Professional Automation Services - Dhyaarth Technology{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Enterprise automation solutions including Python automation, RPA, and AI integration services.">
+{% endblock %}
 
 {% block content %}
-<div class="py-5">
+<!-- Modern Hero Section -->
+<section class="services-hero position-relative" style="background: url('{% static 'main/images/about-hero.jpg' %}') no-repeat center center/cover;">
+    <div class="overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);"></div>
+    <div class="container text-center text-white position-relative" style="z-index:2; padding: 8rem 0;">
+        <span class="badge bg-light text-dark px-3 py-2 mb-3 shadow-sm">Our Services</span>
+        <h1 class="display-4 fw-bold mb-3">Automation Solutions for Modern Businesses</h1>
+        <p class="lead mb-4">Transform your operations with cutting-edge automation from Python scripting to full-scale RPA and AI integration.</p>
+        <a href="#services" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-sm">Explore Services</a>
+    </div>
+</section>
+
+<!-- Main Services Cards -->
+<section id="services" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Our Services</h2>
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <h5>Python Automation</h5>
-                <p>Customized scripts to handle repetitive tasks, boost productivity, and reduce manual errors.</p>
+        <div class="row g-4">
+            <!-- Python Automation -->
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="card p-4 border-0 shadow-sm text-center">
+                    <div class="mb-3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" width="64">
+                    </div>
+                    <h3 class="h5 fw-bold mb-3">Python Automation</h3>
+                    <p class="text-muted">Empower your business with custom Python-based automation and scripting solutions.</p>
+                    <ul class="list-unstyled mb-3">
+                        <li>Data Scraping</li>
+                        <li>Workflow Automation</li>
+                        <li>API Integration</li>
+                    </ul>
+                    <a href="{% url 'python_automation' %}" class="btn btn-outline-primary">Learn More →</a>
+                </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <h5>RPA Bot Development</h5>
-                <p>End-to-end Robotic Process Automation (RPA) for data entry, file handling, report generation, and more.</p>
+
+            <!-- RPA Solutions -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card p-4 border-0 shadow-sm text-center">
+                    <div class="mb-3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1035/1035688.png" alt="RPA" width="64">
+                    </div>
+                    <h3 class="h5 fw-bold mb-3">RPA Solutions</h3>
+                    <p class="text-muted">Streamline processes with end-to-end robotic process automation.</p>
+                    <ul class="list-unstyled mb-3">
+                        <li>Process Analysis</li>
+                        <li>Bot Development</li>
+                        <li>System Integration</li>
+                    </ul>
+                    <a href="{% url 'rpa' %}" class="btn btn-outline-primary">Learn More →</a>
+                </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <h5>Dashboarding & Reporting</h5>
-                <p>Live dashboards and reporting automation using Power BI, Excel, and other tools.</p>
+
+            <!-- AI & ML Integration -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card p-4 border-0 shadow-sm text-center">
+                    <div class="mb-3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2103/2103832.png" alt="AI" width="64">
+                    </div>
+                    <h3 class="h5 fw-bold mb-3">AI & ML Integration</h3>
+                    <p class="text-muted">Leverage AI to drive smarter automation and transformative insights.</p>
+                    <ul class="list-unstyled mb-3">
+                        <li>Predictive Analytics</li>
+                        <li>Computer Vision</li>
+                        <li>NLP Solutions</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">Learn More →</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Our Development Process</h2>
+        <div class="row g-4">
+            <div class="col-md-3" data-aos="fade-up">
+                <div class="card p-4 text-center shadow-sm border-0">
+                    <div class="process-number mb-3" style="width:60px; height:60px; line-height:60px; border-radius:50%; background: #3498db; color:#fff; margin: 0 auto;">1</div>
+                    <h5>Discovery</h5>
+                    <p class="small text-muted">Understanding your needs</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card p-4 text-center shadow-sm border-0">
+                    <div class="process-number mb-3" style="width:60px; height:60px; line-height:60px; border-radius:50%; background: #3498db; color:#fff; margin: 0 auto;">2</div>
+                    <h5>Planning</h5>
+                    <p class="small text-muted">Designing a strategy</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="card p-4 text-center shadow-sm border-0">
+                    <div class="process-number mb-3" style="width:60px; height:60px; line-height:60px; border-radius:50%; background: #3498db; color:#fff; margin: 0 auto;">3</div>
+                    <h5>Development</h5>
+                    <p class="small text-muted">Building your solution</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="card p-4 text-center shadow-sm border-0">
+                    <div class="process-number mb-3" style="width:60px; height:60px; line-height:60px; border-radius:50%; background: #3498db; color:#fff; margin: 0 auto;">4</div>
+                    <h5>Deployment</h5>
+                    <p class="small text-muted">Implementing & supporting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

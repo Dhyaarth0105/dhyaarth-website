@@ -2,86 +2,402 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Dhyaarth Technology{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap 5 CDN -->
+    <title>{% block title %}Dhyaarth Technology{% endblock %}</title>
+    
+    <!-- Meta Tags -->
+    {% block meta %}{% endblock %}
+    <meta name="theme-color" content="#1a237e">
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Page Loader -->
+    <style id="loader-style">
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        .loader-content {
+            text-align: center;
+        }
+        .loader-logo {
+            width: 80px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
 
     <style>
-        body {
-            padding-top: 70px;
+        :root {
+            --primary-color: #2B2D42;      /* Rich dark blue-gray */
+            --secondary-color: #14213D;     /* Deep navy */
+            --accent-color: #5C6AC4;        /* Professional blue */
+            --text-primary: #2B2D42;
+            --text-secondary: #6B7280;
+            --success-color: #059669;       /* Emerald green */
+            --bg-light: #F8FAFC;
+            --bg-gradient: linear-gradient(135deg, #2B2D42 0%, #14213D 100%);
         }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 80px;
+            color: var(--text-primary);
+        }
+
+        /* Modern Navbar Styles */
+        .navbar {
+            background: var(--bg-gradient);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(43, 45, 66, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            position: relative;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .navbar-brand .brand-main {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar-brand .brand-sub {
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.2rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-1px);
+        }
+
+        .dropdown-menu {
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Modern Footer */
         footer {
-            background-color: #f8f9fa;
-            padding: 20px 0;
-            margin-top: 40px;
+            background: var(--bg-gradient);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-links h5 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(92, 106, 196, 0.25);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: #4F5AB3;
+            color: white;
+        }
+
+        /* Global Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Update Button Styles */
+        .btn-primary {
+            background: var(--accent-color);
+            border: none;
+            box-shadow: 0 4px 6px rgba(92, 106, 196, 0.12);
+        }
+
+        .btn-primary:hover {
+            background: #4F5AB3;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(92, 106, 196, 0.2);
+        }
+
+        /* Social Links Enhancement */
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Global Link Style */
+        a {
+            transition: all 0.3s ease;
+        }
+
+        /* Content Areas */
+        .bg-light {
+            background: var(--bg-light) !important;
         }
     </style>
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Dhyaarth Technology</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
-
-                <!-- Services Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="{% url 'python_automation' %}">Python Automation</a></li>
-                        <li><a class="dropdown-item" href="{% url 'rpa' %}">RPA</a></li>
-                        <li><a class="dropdown-item" href="{% url 'intelligent_document_processing' %}">Intelligent Document Processing</a></li>
-                        <li><a class="dropdown-item" href="{% url 'chatbot' %}">Chatbot Development</a></li>
-                    </ul>
-                </li>
-
-                <!-- Industries Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Industries
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="industriesDropdown">
-                        <li><a class="dropdown-item" href="{% url 'manufacturing' %}">Manufacturing</a></li>
-                        <li><a class="dropdown-item" href="{% url 'healthcare' %}">Healthcare</a></li>
-                        <li><a class="dropdown-item" href="{% url 'finance' %}">Finance</a></li>
-                        <li><a class="dropdown-item" href="{% url 'retail' %}">Retail</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'testimonials' %}">Testimonials</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact/">Contact us</a></li>
-            </ul>
+    <!-- Page Loader -->
+    <div class="loader-overlay">
+        <div class="loader-content">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Loading..." class="loader-logo">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
     </div>
-</nav>
 
-<!-- Page Content -->
-<div class="container">
-    {% block content %}
-    {% endblock %}
-</div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="brand-main">Dhyaarth</span>
+                <span class="brand-sub">Technology</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
 
-<!-- Footer -->
-<footer class="text-center">
-    <div class="container">
-        <p class="mb-0">&copy; 2025 Dhyaarth Technology. All rights reserved.</p>
-    </div>
-</footer>
+                    <!-- Services Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="{% url 'python_automation' %}">Python Automation</a></li>
+                            <li><a class="dropdown-item" href="{% url 'rpa' %}">RPA</a></li>
+                            <li><a class="dropdown-item" href="{% url 'intelligent_document_processing' %}">Intelligent Document Processing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'chatbot' %}">Chatbot Development</a></li>
+                        </ul>
+                    </li>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                    <!-- Industries Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Industries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="industriesDropdown">
+                            <li><a class="dropdown-item" href="{% url 'manufacturing' %}">Manufacturing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'healthcare' %}">Healthcare</a></li>
+                            <li><a class="dropdown-item" href="{% url 'finance' %}">Finance</a></li>
+                            <li><a class="dropdown-item" href="{% url 'retail' %}">Retail</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'testimonials' %}">Testimonials</a></li>
+                    {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li> {% endcomment %}
+                    <li class="nav-item"><a class="nav-link" href="/contact/">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="fade-in">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Modern Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="mb-4">Dhyaarth Technology</h4>
+                    <p class="mb-4">Empowering businesses through innovative automation solutions and digital transformation.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/services/">Services</a></li>
+                        <li><a href="/portfolio/">Portfolio</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-links">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#">Python Automation</a></li>
+                        <li><a href="#">RPA Solutions</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">AI & ML Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Get in touch for automation solutions:</p>
+                    <a href="/contact/" class="btn btn-light rounded-pill px-4">Contact Now</a>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Dhyaarth Technology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove loader
+            setTimeout(() => {
+                document.querySelector('.loader-overlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.loader-overlay').remove();
+                }, 500);
+            }, 1000);
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>

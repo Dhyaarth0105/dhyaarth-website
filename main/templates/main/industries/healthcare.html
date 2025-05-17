@@ -1,7 +1,142 @@
 {% extends 'main/base.html' %}
 {% block content %}
-<div class="container mt-5">
-    <h1>Healthcare Industry Solutions</h1>
-    <p>Empowering healthcare providers with automation, patient engagement tools, and secure data management solutions to improve patient outcomes and operational efficiency.</p>
-</div>
+<!-- Hero Section -->
+<section class="py-5 position-relative" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
+    <div class="container text-center text-white py-5">
+        <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Healthcare Solutions</h1>
+        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Empowering Healthcare with Intelligent Automation</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <span class="badge bg-light text-dark px-3 py-2">Patient Care</span>
+                    <span class="badge bg-light text-dark px-3 py-2">Data Security</span>
+                    <span class="badge bg-light text-dark px-3 py-2">Operations</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Healthcare Automation Solutions</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-inline-block bg-primary bg-opacity-10 p-3 rounded-circle mb-3">
+                            <i class="bi bi-clipboard2-pulse text-primary h3 mb-0"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Patient Records Management</h3>
+                        <p class="text-muted mb-0">Automated EMR/EHR systems with secure data handling and quick access.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-inline-block bg-success bg-opacity-10 p-3 rounded-circle mb-3">
+                            <i class="bi bi-shield-check text-success h3 mb-0"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Data Security</h3>
+                        <p class="text-muted mb-0">HIPAA-compliant data handling with advanced encryption and access controls.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-inline-block bg-info bg-opacity-10 p-3 rounded-circle mb-3">
+                            <i class="bi bi-calendar-check text-info h3 mb-0"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-3">Appointment Management</h3>
+                        <p class="text-muted mb-0">Smart scheduling and automated appointment reminders system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Healthcare Applications</h2>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="h5 fw-bold mb-3">Patient Management</h4>
+                        <p class="text-muted small mb-0">Streamlined patient registration and record management.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="h5 fw-bold mb-3">Lab Automation</h4>
+                        <p class="text-muted small mb-0">Automated test results processing and reporting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="h5 fw-bold mb-3">Insurance Processing</h4>
+                        <p class="text-muted small mb-0">Automated claims processing and verification.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="h5 fw-bold mb-3">Pharmacy Integration</h4>
+                        <p class="text-muted small mb-0">Automated prescription management system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4" data-aos="fade-up">Ready to Transform Healthcare Operations?</h2>
+        <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="100">Enhance patient care with our intelligent automation solutions.</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg rounded-pill px-5" data-aos="fade-up" data-aos-delay="200">Get Started</a>
+    </div>
+</section>
+
+<!-- Add Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Add AOS library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    });
+</script>
+
+<style>
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.badge {
+    transition: all 0.3s ease;
+}
+.badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+</style>
 {% endblock %}
